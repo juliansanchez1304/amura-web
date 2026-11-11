@@ -1,0 +1,9 @@
+# URLs antiguas de Shopify
+/collections/*   /   301
+/collections     /   301
+/products/*      /   301
+/cart            /   301
+/account/*       /   301
+/account         /   301
+/search          /   301
+/sitemap_*       /sitemap.xml  301
