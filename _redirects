@@ -1,4 +1,12 @@
 # URLs antiguas de Shopify
+# Versión en inglés antigua de Shopify (/en/...) -> misma página en español
+/en/*   /:splat   301
+
+# Contenidos antiguos de Shopify que ahora viven en otro sitio
+/pages/asesoramiento-coche-electrico                                       /pages/estudio-compra-coche-electrico   301
+/blogs/guia-de-ayudas-y-subvenciones-para-coches-electricos-2026/*         /blogs/comprar-primer-electrico/ayudas-deducciones-fiscales-coche-electrico-espana   301
+/blogs/guia-de-compra-como-elegir/*                                        /blogs/comprar-primer-electrico   301
+
 /collections/*   /   301
 /collections     /   301
 /products/*      /   301
