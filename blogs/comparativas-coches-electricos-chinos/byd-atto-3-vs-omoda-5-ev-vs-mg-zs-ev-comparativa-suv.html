@@ -1109,6 +1109,8 @@ gtag('js',new Date());gtag('config','G-RGHMMSZ26L');
     fd.append('origen', 'Pie de pagina - suscripcion');
     var btn = f.querySelector('button[type=submit]');
     if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+    try { fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+      body: JSON.stringify({ email: e.value }) }); } catch (_) {}
     fetch('https://formspree.io/f/xbgldggg', {
       method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
     }).then(function () { window.location.href = '/pages/gracias'; })
