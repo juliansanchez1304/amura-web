@@ -23,7 +23,7 @@ export async function onRequestPost({ request, env }) {
 
   const base = {};
   const name = clean(data.name, 100);
-  if (name) base.FIRSTNAME = name;
+  if (name) base.NOMBRE = name;   // en esta cuenta de Brevo el nombre se llama NOMBRE
   if (validPhone) base.SMS = phone;
   const origen = clean(data.origen || "Pie de pagina - suscripcion", 120);
 
@@ -39,8 +39,12 @@ export async function onRequestPost({ request, env }) {
       }),
     });
 
-  // 1) con el atributo ORIGEN; 2) si Brevo lo rechaza, sin él, para no perder nunca el contacto
-  let r = await send({ ...base, ORIGEN: origen });
-  if (!r.ok) r = await send(base);
+  // Intentos de más a menos datos: así no se pierde nunca el contacto aunque un atributo falle
+  const intentos = [{ ...base, ORIGEN: origen }, { ORIGEN: origen, ...(validPhone ? { SMS: phone } : {}) }, validPhone ? { SMS: phone } : {}];
+  let r;
+  for (const attrs of intentos) {
+    r = await send(attrs);
+    if (r.ok) break;
+  }
   return json({ ok: r.ok }, r.ok ? 200 : 502);
 }
