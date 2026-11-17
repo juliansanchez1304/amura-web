@@ -7,3 +7,10 @@
 /account         /   301
 /search          /   301
 /sitemap_*       /sitemap.xml  301
+
+# Enlaces cortos de las redes (con UTM para que Analytics sepa de dónde viene cada visita)
+/facebook    /?utm_source=facebook&utm_medium=social&utm_campaign=bio   302
+/instagram   /?utm_source=instagram&utm_medium=social&utm_campaign=bio  302
+/tiktok      /?utm_source=tiktok&utm_medium=social&utm_campaign=bio     302
+/youtube     /?utm_source=youtube&utm_medium=social&utm_campaign=bio    302
+/pinterest   /?utm_source=pinterest&utm_medium=social&utm_campaign=bio  302
